@@ -1,6 +1,7 @@
 import './App.css'
 import Button from './components/Button'
 import ButtonV2 from './components/ButtonV2'
+import Container from './components/Container'
 import Input from './components/Input'
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
       <p>
         <ButtonV2 href='https://react.dev/'>New Link</ButtonV2>
       </p>
+      <Container as={Button} el='button'>
+        Click me
+      </Container>
     </main>
   )
 }
