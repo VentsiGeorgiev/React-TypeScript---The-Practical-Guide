@@ -1,32 +1,27 @@
 import './App.css'
-import Button from './components/Button'
-import ButtonV2 from './components/ButtonV2'
-import Container from './components/Container'
 import Input from './components/Input'
+import Form, { type FormHandle } from './components/Form'
+import Button from './components/Button'
+import { useRef } from 'react'
 
 function App() {
+  const customForm = useRef<FormHandle>(null)
+  function handleSave(data: unknown) {
+    const extractedData = data as { name: string; age: string }
+    console.log(extractedData)
+
+    customForm.current?.clear()
+  }
   return (
     <main>
       <h1>Hello World</h1>
-      <Input id='name' label='Your name' type='text' />
-      <Input id='age' label='Your age' type='number' />
-      <p>
-        <Button el='button'>A Button</Button>
-      </p>
-      <p>
-        <Button el='anchor' href='https://react.dev/' target='_blank'>
-          A Link
-        </Button>
-      </p>
-      <p>
-        <ButtonV2>New button</ButtonV2>
-      </p>
-      <p>
-        <ButtonV2 href='https://react.dev/'>New Link</ButtonV2>
-      </p>
-      <Container as={Button} el='button'>
-        Click me
-      </Container>
+      <Form onSave={handleSave} ref={customForm}>
+        <Input id='name' label='Your name' type='text' name='name' />
+        <Input id='age' label='Age' type='number' name='age' />
+        <p>
+          <Button el='button'>Save</Button>
+        </p>
+      </Form>
     </main>
   )
 }
