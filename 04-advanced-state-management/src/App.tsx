@@ -1,9 +1,16 @@
 import './App.css'
+import AddTimer from './components/AddTimer'
+import Header from './components/Header'
+import Timers from './components/Timers'
 
 function App() {
   return (
     <>
-      <h1>Hello world</h1>
+      <Header />
+      <main>
+        <AddTimer />
+        <Timers />
+      </main>
     </>
   )
 }
